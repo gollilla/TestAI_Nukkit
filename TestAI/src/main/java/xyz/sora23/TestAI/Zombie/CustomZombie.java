@@ -72,13 +72,13 @@ public class CustomZombie {
         int id = -1;
         switch (this.getDirection()){
             case NORTH:
-                id = level.getBlockIdAt((int) Math.floor(this.getX()) - 1, (int) this.getY() + y,(int) Math.floor(this.getZ()));
+                id = level.getBlockIdAt((int) Math.floor(this.getX()) - 1, (int) this.getY() + y, (int) Math.floor(this.getZ()));
                 break;
             case SOUTH:
-                id = level.getBlockIdAt((int) Math.floor(this.getX()) + 1, (int) this.getY() + y,(int) Math.floor(this.getZ()));
+                id = level.getBlockIdAt((int) Math.floor(this.getX()) + 1, (int) this.getY() + y, (int) Math.floor(this.getZ()));
                 break;
             case EAST:
-                id = level.getBlockIdAt( (int) Math.floor(this.getX()), (int) this.getY() + y,(int) Math.floor(this.getZ()) - 1);
+                id = level.getBlockIdAt( (int) Math.floor(this.getX()), (int) this.getY() + y, (int) Math.floor(this.getZ()) - 1);
                 break;
             case WEST:
                 id = level.getBlockIdAt( (int) Math.floor(this.getX()), (int) this.getY() + y, (int) Math.floor(this.getZ()) + 1);
@@ -89,6 +89,11 @@ public class CustomZombie {
 
     public double getDistance(){
         return Math.sqrt(this.zombie.distance(this.target));
+    }
+
+
+    public int getUnderBlock(){
+        return this.getLevel().getBlockIdAt((int) Math.floor(this.getX()), (int) Math.floor(this.getY()) - 1, (int) Math.floor(this.getZ()));
     }
 
 

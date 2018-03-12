@@ -26,7 +26,7 @@ public class ZombieTask extends PluginTask{
         double cx = this.zombie.getX();
         double cz = this.zombie.getZ();
 
-        double x = 0, y= 0, z = 0;
+        double x = 0, y = 0, z = 0;
 
         if((0 <= cx && 0 <= tx) || (cx < 0 && tx < 0)){
             if(tx < cx){
@@ -58,14 +58,18 @@ public class ZombieTask extends PluginTask{
         z = CustomZombie.SPEED * Math.cos(rad);
 
         if(this.zombie.getFrontBlock(0) != Block.AIR && this.zombie.getFrontBlock(1) == Block.AIR && this.zombie.getFrontBlock(2) == Block.AIR){
-            y = 0.5;
+            y = 1;
+        }
+        if(this.zombie.getUnderBlock() == Block.AIR){
+            y = -1;
         }
         this.zombie.setYaw(-Math.toDegrees(rad));
         if(this.zombie.getDistance() <= 1){
             this.zombie.attack2target(3);
-            return;
+        }else{
+            this.zombie.move(x, y, z);
         }
-        this.zombie.move(x, y, z);
+
     }
 
 }
