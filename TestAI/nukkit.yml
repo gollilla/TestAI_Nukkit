@@ -1,7 +1,0 @@
-name: TestAI
-main: xyz.sora23.Main
-version: 1.0
-api: ["1.0.0"]
-author: soradore
-load: POSTWORLD
-description: "PMMP TestAI 移植"
