@@ -18,6 +18,10 @@ import java.util.*;
 
 public class Main extends PluginBase implements Listener {
 
+    public Main(){
+
+    }
+
     public Map<Long, TaskHandler> ids = new HashMap<Long, TaskHandler>();
     @Override
     public void onEnable () {

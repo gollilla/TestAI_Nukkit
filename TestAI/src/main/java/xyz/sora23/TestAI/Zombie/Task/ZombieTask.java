@@ -15,6 +15,7 @@ public class ZombieTask extends PluginTask{
         this.zombie = zombie;
     }
 
+    @Override
     public void onRun(int currentTick){
         EntityHuman target = this.zombie.setTarget();
         if(target == null) return;
@@ -57,7 +58,7 @@ public class ZombieTask extends PluginTask{
         z = CustomZombie.SPEED * Math.cos(rad);
 
         if(this.zombie.getFrontBlock(0) != Block.AIR && this.zombie.getFrontBlock(1) == Block.AIR && this.zombie.getFrontBlock(2) == Block.AIR){
-            y += 0.5;
+            y = 0.5;
         }
         this.zombie.setYaw(-Math.toDegrees(rad));
         if(this.zombie.getDistance() <= 1){
