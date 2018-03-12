@@ -13,10 +13,11 @@ import cn.nukkit.math.BlockFace;
 
 public class CustomZombie {
 
+    public static final double SPEED = 0.2;
     public EntityZombie zombie;
     public EntityHuman target;
 
-    public CustomZombie(Entity zombie, Entity target){
+    public CustomZombie(EntityZombie zombie, EntityHuman target){
         this.zombie = zombie;
         if(target == null) this.target = this.setTarget();
     }
@@ -68,7 +69,7 @@ public class CustomZombie {
 
     public int getFrontBlock(int y){
         Level level = this.getLevel();
-        int id = null
+        int id = -1;
         switch (this.getDirection()){
             case NORTH:
                 id = level.getBlockIdAt((int) Math.floor(this.getX()) - 1, (int) this.getY() + y,(int) Math.floor(this.getZ()));
@@ -86,9 +87,17 @@ public class CustomZombie {
         return id;
     }
 
+    public double getDistance(){
+        return Math.sqrt(this.zombie.distance(this.target));
+    }
+
 
     public void attack2target(int val){
         EntityDamageByEntityEvent event = new EntityDamageByEntityEvent(this.zombie, this.target, EntityDamageEvent.DamageCause.ENTITY_ATTACK, val);
         this.target.attack(event);
+    }
+
+    public void move(double x, double y, double z){
+        this.zombie.move(x, y, z);
     }
 }
